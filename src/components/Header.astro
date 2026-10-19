@@ -1,0 +1,187 @@
+---
+import BrandLogo from './BrandLogo.astro';
+
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = '/' } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/#services', label: 'Our Services' },
+  { href: '/gallery', label: 'Gallery' },
+  { href: '/#about', label: 'About Us' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const isActive = (href: string) => {
+  if (href === '/' && currentPage === '/') return true;
+  if (href === '/gallery' && currentPage.startsWith('/gallery')) return true;
+  if (href === '/contact' && currentPage.startsWith('/contact')) return true;
+  return false;
+};
+---
+
+<header class="sticky top-0 z-50 w-full bg-ivory/95 backdrop-blur-md border-b border-beige/60 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20 sm:h-24">
+      <!-- Brand Logo -->
+      <BrandLogo size="md" />
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-1 lg:space-x-3" aria-label="Main Navigation">
+        {navLinks.map((link) => {
+          const active = isActive(link.href);
+          return (
+            <a
+              href={link.href}
+              class={`relative px-3.5 py-2 text-sm font-medium transition-colors duration-200 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gold ${
+                active
+                  ? 'text-navy font-semibold'
+                  : 'text-body hover:text-navy hover:bg-beige/30'
+              }`}
+              aria-current={active ? 'page' : undefined}
+            >
+              {link.label}
+              {active && (
+                <span class="absolute bottom-0 left-3.5 right-3.5 h-[2px] bg-gold rounded-full" />
+              )}
+            </a>
+          );
+        })}
+      </nav>
+
+      <!-- Desktop Call to Action -->
+      <div class="hidden md:flex items-center">
+        <a
+          href="/contact"
+          class="group inline-flex items-center gap-2.5 px-5 py-2.5 bg-gradient-to-r from-gold via-gold-amber to-gold-dark text-white text-sm font-semibold rounded-full shadow-md hover:shadow-luxury-hover hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
+        >
+          <!-- Calendar Icon -->
+          <svg class="w-4 h-4 text-ivory/90 group-hover:rotate-12 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+            <line x1="16" x2="16" y1="2" y2="6" />
+            <line x1="8" x2="8" y1="2" y2="6" />
+            <line x1="3" x2="21" y1="10" y2="10" />
+            <path d="m9 16 2 2 4-4" />
+          </svg>
+          <span>Book Your Event</span>
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <div class="flex items-center md:hidden">
+        <button
+          type="button"
+          id="mobile-menu-btn"
+          class="p-2.5 rounded-lg text-navy hover:bg-beige/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Toggle mobile menu"
+        >
+          <!-- Hamburger icon -->
+          <svg id="hamburger-icon" class="w-6 h-6 block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg>
+          <!-- Close icon -->
+          <svg id="close-icon" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden border-t border-beige/60 bg-ivory/98 backdrop-blur-xl px-4 pt-3 pb-6 space-y-3 transition-all duration-300 shadow-xl"
+  >
+    <div class="flex flex-col space-y-1">
+      {navLinks.map((link) => {
+        const active = isActive(link.href);
+        return (
+          <a
+            href={link.href}
+            class={`px-4 py-2.5 rounded-lg text-base font-medium transition-colors ${
+              active
+                ? 'bg-beige/50 text-navy font-semibold'
+                : 'text-body hover:bg-beige/30 hover:text-navy'
+            }`}
+            aria-current={active ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+    </div>
+
+    <div class="pt-2 border-t border-beige/40">
+      <a
+        href="/contact"
+        class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-gradient-to-r from-gold via-gold-amber to-gold-dark text-white font-semibold rounded-full shadow-md text-sm active:scale-[0.98] transition-transform"
+      >
+        <svg class="w-4 h-4 text-ivory/90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+          <line x1="16" x2="16" y1="2" y2="6" />
+          <line x1="8" x2="8" y1="2" y2="6" />
+          <line x1="3" x2="21" y1="10" y2="10" />
+        </svg>
+        <span>Book Your Event</span>
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  function setupMobileMenu() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    if (!btn || !menu || !hamburgerIcon || !closeIcon) return;
+
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      const nextState = !isExpanded;
+
+      btn.setAttribute('aria-expanded', String(nextState));
+      if (nextState) {
+        menu.classList.remove('hidden');
+        hamburgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      } else {
+        menu.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+    });
+
+    // Close when clicking a nav link
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        btn.setAttribute('aria-expanded', 'false');
+        menu.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      });
+    });
+  }
+
+  // Setup on page load and astro page transitions
+  setupMobileMenu();
+  document.addEventListener('astro:page-load', setupMobileMenu);
+</script>

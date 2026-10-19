@@ -1,0 +1,196 @@
+---
+import BrandLogo from './BrandLogo.astro';
+import { businessConfig, getPhoneTelUrl, getMailtoUrl } from '../data/business';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-navy text-ivory/80 pt-16 pb-12 border-t border-gold/30">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-12">
+      
+      <!-- Brand & Tagline Column -->
+      <div class="lg:col-span-4">
+        <BrandLogo variant="light" size="lg" />
+        <p class="font-sans text-sm text-ivory/70 leading-relaxed mt-5 max-w-sm">
+          {businessConfig.shortDescription}
+        </p>
+      </div>
+
+      <!-- Quick Links Column -->
+      <div class="lg:col-span-2">
+        <h4 class="font-serif text-base font-semibold text-white tracking-wide mb-4">
+          Quick Links
+        </h4>
+        <ul class="space-y-2.5 text-sm font-sans">
+          <li>
+            <a href="/" class="hover:text-gold-light transition-colors">Home</a>
+          </li>
+          <li>
+            <a href="/#services" class="hover:text-gold-light transition-colors">Our Services</a>
+          </li>
+          <li>
+            <a href="/gallery" class="hover:text-gold-light transition-colors">Gallery</a>
+          </li>
+          <li>
+            <a href="/#about" class="hover:text-gold-light transition-colors">About Us</a>
+          </li>
+          <li>
+            <a href="/contact" class="hover:text-gold-light transition-colors">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Our Services Column -->
+      <div class="lg:col-span-3">
+        <h4 class="font-serif text-base font-semibold text-white tracking-wide mb-4">
+          Our Services
+        </h4>
+        <ul class="space-y-2.5 text-sm font-sans">
+          <li>
+            <a href="/gallery?category=weddings" class="hover:text-gold-light transition-colors">Wedding Decorations</a>
+          </li>
+          <li>
+            <a href="/gallery?category=engagements" class="hover:text-gold-light transition-colors">Engagements</a>
+          </li>
+          <li>
+            <a href="/gallery?category=birthdays" class="hover:text-gold-light transition-colors">Birthday Events</a>
+          </li>
+          <li>
+            <a href="/gallery?category=corporate" class="hover:text-gold-light transition-colors">Corporate Events</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Get In Touch Column -->
+      <div class="lg:col-span-3">
+        <h4 class="font-serif text-base font-semibold text-white tracking-wide mb-4">
+          Get In Touch
+        </h4>
+        <ul class="space-y-3 text-sm font-sans">
+          <!-- Phone -->
+          <li>
+            <a 
+              href={getPhoneTelUrl()} 
+              class="flex items-center gap-3 hover:text-gold-light transition-colors group"
+            >
+              <span class="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center text-gold-light group-hover:bg-gold/20 shrink-0">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </span>
+              <span>{businessConfig.phone.display}</span>
+            </a>
+          </li>
+
+          <!-- Email -->
+          <li>
+            <a 
+              href={getMailtoUrl()} 
+              class="flex items-center gap-3 hover:text-gold-light transition-colors group break-all"
+            >
+              <span class="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center text-gold-light group-hover:bg-gold/20 shrink-0">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </span>
+              <span>{businessConfig.email.address}</span>
+            </a>
+          </li>
+
+          <!-- Location -->
+          <li>
+            <a 
+              href={businessConfig.location.mapsUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="flex items-center gap-3 hover:text-gold-light transition-colors group"
+            >
+              <span class="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center text-gold-light group-hover:bg-gold/20 shrink-0">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </span>
+              <span>{businessConfig.location.display}</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Social Icons (Matching reference: Instagram, Facebook, YouTube, WhatsApp) -->
+        <div class="mt-6">
+          <p class="text-xs uppercase tracking-wider text-ivory/60 mb-2 font-medium">Follow Us</p>
+          <div class="flex items-center space-x-3">
+            {businessConfig.socials.instagram && (
+              <a 
+                href={businessConfig.socials.instagram} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="w-8 h-8 rounded-full border border-ivory/20 flex items-center justify-center text-ivory/80 hover:text-white hover:border-gold hover:bg-gold/20 transition-all duration-200"
+                aria-label="Follow Ramesh Decorators on Instagram"
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                </svg>
+              </a>
+            )}
+
+            {businessConfig.socials.facebook && (
+              <a 
+                href={businessConfig.socials.facebook} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="w-8 h-8 rounded-full border border-ivory/20 flex items-center justify-center text-ivory/80 hover:text-white hover:border-gold hover:bg-gold/20 transition-all duration-200"
+                aria-label="Follow Ramesh Decorators on Facebook"
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+              </a>
+            )}
+
+            {businessConfig.socials.youtube && (
+              <a 
+                href={businessConfig.socials.youtube} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="w-8 h-8 rounded-full border border-ivory/20 flex items-center justify-center text-ivory/80 hover:text-white hover:border-gold hover:bg-gold/20 transition-all duration-200"
+                aria-label="Subscribe to Ramesh Decorators on YouTube"
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/>
+                  <polygon points="10 15 15 12 10 9 10 15" fill="currentColor"/>
+                </svg>
+              </a>
+            )}
+
+            {businessConfig.socials.whatsappCommunity && (
+              <a 
+                href={businessConfig.socials.whatsappCommunity} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="w-8 h-8 rounded-full border border-ivory/20 flex items-center justify-center text-ivory/80 hover:text-white hover:border-gold hover:bg-gold/20 transition-all duration-200"
+                aria-label="Connect with Ramesh Decorators on WhatsApp"
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+              </a>
+            )}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright & Fine Print -->
+    <div class="pt-8 border-t border-ivory/10 flex flex-col sm:flex-row items-center justify-between text-xs text-ivory/50 gap-4">
+      <p>© {currentYear} {businessConfig.name}. All rights reserved.</p>
+      <p class="font-sans">Premium Event Decoration & Planning Services</p>
+    </div>
+  </div>
+</footer>

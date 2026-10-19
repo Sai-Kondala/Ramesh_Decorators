@@ -1,0 +1,521 @@
+---
+import { businessConfig } from '../data/business';
+---
+
+<section 
+  id="hero-section" 
+  class="relative w-full flex flex-col justify-between overflow-hidden bg-navy select-none"
+  aria-label="Hero Showcase and Interactive String Lights"
+>
+  <!-- Desktop & Tablet Hero Viewport (Full Bleed) -->
+  <!-- On mobile, this container holds the uncropped cinematic stage visual -->
+  <div class="relative w-full h-[52vh] min-h-[350px] max-h-[440px] md:h-auto md:min-h-[88vh] lg:min-h-[92vh] flex flex-col justify-between overflow-hidden bg-navy">
+    
+    <!-- Underlying Wedding Stage Image -->
+    <div class="absolute inset-0 z-0 overflow-hidden">
+      <img
+        id="hero-bg-image"
+        src="/images/hero/wedding-stage-showcase.jpg"
+        alt="Royal Indian wedding stage with carved wooden pillars, floral garland ceiling, banana leaf murals, and elegant chaise lounge"
+        class="w-full h-full object-cover object-[center_35%] md:object-center scale-100 transition-transform duration-1000 ease-out"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <!-- Subtle luxury gradient overlay ensuring photo radiance & depth -->
+      <div class="absolute inset-0 bg-gradient-to-r from-ivory/80 via-ivory/30 to-transparent hidden md:block"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-navy/30"></div>
+    </div>
+
+    <!-- Top Hanging Valance Rod in Gold Trim -->
+    <div class="absolute top-0 left-0 right-0 z-30 h-3.5 bg-gradient-to-r from-gold-dark via-gold-shimmer to-gold-dark shadow-md flex items-center justify-around pointer-events-none border-b border-gold-amber/40">
+      <div class="w-full h-full opacity-60 bg-[radial-gradient(#FAF7F0_1px,transparent_1px)] [background-size:8px_8px]"></div>
+    </div>
+
+    <!-- Interactive Sparkling Light Strings Canvas Layer -->
+    <!-- Covers the full hero stage: light wires sway & part wherever the cursor or touch moves -->
+    <canvas 
+      id="hero-strings-canvas" 
+      class="absolute inset-0 z-10 w-full h-full pointer-events-auto cursor-crosshair touch-none"
+      title="Move your cursor or swipe to part the sparkling light strings"
+    ></canvas>
+
+    <!-- Floating Interactive Hint Badge -->
+    <div 
+      id="strings-interaction-hint" 
+      class="absolute top-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy/80 backdrop-blur-md border border-gold/60 text-gold-light text-[11px] font-semibold shadow-gold-glow animate-pulse transition-opacity duration-500"
+    >
+      <span class="text-gold-shimmer">✨</span>
+      <span class="hidden sm:inline">Move cursor across sparkling strings to part them</span>
+      <span class="sm:hidden">Touch & swipe strings to part them</span>
+      <span class="text-gold-shimmer">✨</span>
+    </div>
+
+    <!-- Desktop / Tablet Hero Text Card (Hidden on small mobile so the full stage is visible) -->
+    <div class="hidden md:flex relative z-20 max-w-7xl mx-auto px-6 lg:px-8 pt-20 lg:pt-28 pb-10 w-full flex-1 flex-col justify-center pointer-events-none">
+      <div class="max-w-xl lg:max-w-2xl pointer-events-auto bg-ivory/85 backdrop-blur-md p-8 lg:p-10 rounded-2xl border border-beige/80 shadow-luxury transition-all duration-300">
+        
+        <!-- Eyebrow -->
+        <div class="flex items-center gap-3 mb-3">
+          <span class="h-[1px] w-8 bg-gold"></span>
+          <p class="font-sans text-xs font-bold tracking-[0.22em] text-gold-amber uppercase">
+            EVENT DECORATION & PLANNING SERVICES
+          </p>
+          <span class="h-[1px] w-8 bg-gold"></span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-navy leading-[1.15] mb-4 tracking-tight">
+          We Make Your Special Moments <span class="italic font-normal text-gold-dark font-serif">Truly Memorable</span>
+        </h1>
+
+        <!-- Supporting Text -->
+        <p class="font-sans text-base lg:text-lg text-body leading-relaxed mb-6 max-w-xl">
+          Beautiful wedding decorations, elegant event styling and complete planning services to make your celebrations more special and memorable.
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap items-center gap-4">
+          <a
+            href="/gallery"
+            id="hero-explore-btn"
+            class="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-navy hover:bg-navy-light text-white text-sm lg:text-base font-semibold rounded-full shadow-md hover:shadow-luxury-hover hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+          >
+            <svg class="w-4 h-4 text-gold-light group-hover:scale-110 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+            <span>Explore Our Work</span>
+            <svg class="w-4 h-4 text-white group-hover:translate-x-1.5 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+
+          <a
+            href="/contact"
+            id="hero-quote-btn"
+            class="group inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-beige/80 hover:bg-beige text-navy border border-gold/40 text-sm lg:text-base font-semibold rounded-full shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+          >
+            <svg class="w-4 h-4 text-gold-amber group-hover:rotate-6 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <path d="M14 2v6h6" />
+              <line x1="16" x2="8" y1="13" y2="13" />
+              <line x1="16" x2="8" y1="17" y2="17" />
+              <line x1="10" x2="8" y1="9" y2="9" />
+            </svg>
+            <span>Get a Quote</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Mobile Hero Content Section (Positioned cleanly below stage on mobile) -->
+  <!-- This guarantees the stage photo is NEVER cropped severely and NEVER obscured! -->
+  <div class="md:hidden w-full bg-ivory px-4 pt-6 pb-4 border-t border-beige/60">
+    <div class="max-w-md mx-auto text-center">
+      
+      <div class="inline-flex items-center gap-2 mb-2">
+        <span class="h-[1px] w-6 bg-gold"></span>
+        <p class="font-sans text-[10px] font-bold tracking-[0.2em] text-gold-amber uppercase">
+          EVENT DECORATION & PLANNING
+        </p>
+        <span class="h-[1px] w-6 bg-gold"></span>
+      </div>
+
+      <h1 class="font-serif text-2xl font-bold text-navy leading-tight mb-2 tracking-tight">
+        We Make Your Special Moments <br/><span class="italic font-normal text-gold-dark font-serif">Truly Memorable</span>
+      </h1>
+
+      <p class="font-sans text-xs text-body leading-relaxed mb-4 max-w-sm mx-auto">
+        Beautiful wedding decorations, elegant event styling and complete planning services to make your celebrations more special and memorable.
+      </p>
+
+      <div class="flex items-center justify-center gap-3">
+        <a
+          href="/gallery"
+          class="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-navy text-white text-xs font-semibold rounded-full shadow-md active:scale-[0.98] transition-transform"
+        >
+          <svg class="w-3.5 h-3.5 text-gold-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+          <span>Explore Work</span>
+          <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <a
+          href="/contact"
+          class="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-beige/80 text-navy border border-gold/40 text-xs font-semibold rounded-full shadow-sm active:scale-[0.98] transition-transform"
+        >
+          <svg class="w-3.5 h-3.5 text-gold-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg>
+          <span>Get Quote</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Brand Highlights Bar -->
+  <div class="relative z-20 w-full bg-ivory/95 border-t border-beige/80 py-4 px-4 sm:px-6 lg:px-8 shadow-sm">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-around sm:justify-between gap-y-3 gap-x-6 text-xs sm:text-sm font-medium text-navy">
+      
+      <div class="flex items-center gap-2">
+        <span class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center text-gold-amber shrink-0">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/>
+            <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/>
+            <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/>
+            <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/>
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+          </svg>
+        </span>
+        <span>Creative Designs</span>
+      </div>
+
+      <div class="hidden sm:block w-[1px] h-4 bg-beige-dark"></div>
+
+      <div class="flex items-center gap-2">
+        <span class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center text-gold-amber shrink-0">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+            <path d="M4 22h16"/>
+            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+          </svg>
+        </span>
+        <span>Quality Setup</span>
+      </div>
+
+      <div class="hidden sm:block w-[1px] h-4 bg-beige-dark"></div>
+
+      <div class="flex items-center gap-2">
+        <span class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center text-gold-amber shrink-0">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </span>
+        <span>On-Time Service</span>
+      </div>
+
+      <div class="hidden sm:block w-[1px] h-4 bg-beige-dark"></div>
+
+      <div class="flex items-center gap-2">
+        <span class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center text-gold-amber shrink-0">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+            <path d="M5 3v4M19 17v4M3 5h4M17 19h4"/>
+          </svg>
+        </span>
+        <span>Memorable Experiences</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Interactive Sparkling Strings Physics & Animation Script -->
+<script>
+  interface NodePoint {
+    x: number;
+    y: number;
+    restX: number;
+    restY: number;
+    vx: number;
+  }
+
+  interface FairyBead {
+    nodeIndex: number;
+    offsetY: number; // 0 to 1 along segment
+    twinkleOffset: number;
+    twinkleSpeed: number;
+    size: number;
+    isDiamond: boolean;
+  }
+
+  interface LightStrand {
+    baseX: number;
+    length: number;
+    nodes: NodePoint[];
+    beads: FairyBead[];
+  }
+
+  function initSparklingStrings() {
+    const canvas = document.getElementById('hero-strings-canvas') as HTMLCanvasElement | null;
+    const hint = document.getElementById('strings-interaction-hint');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let strands: LightStrand[] = [];
+    let mouseX = -9999;
+    let mouseY = -9999;
+    let isInteracting = false;
+    let animId = 0;
+
+    const NODE_COUNT = 14;
+
+    function resize() {
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      width = rect.width;
+      height = rect.height;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+
+      buildStrands();
+    }
+
+    function buildStrands() {
+      strands = [];
+      const isMobile = width < 640;
+      // Spacing across the top bar
+      const spacing = isMobile ? 18 : 22;
+      const count = Math.max(12, Math.floor(width / spacing));
+
+      for (let i = 0; i < count; i++) {
+        const baseX = (i + 0.5) * (width / count);
+        // Varying realistic hanging lengths
+        const lengthMod = 0.82 + (Math.sin(i * 0.45) * 0.12) + (Math.cos(i * 0.8) * 0.05);
+        const strandLength = Math.min(height * 0.95, height * lengthMod);
+
+        const nodes: NodePoint[] = [];
+        for (let j = 0; j < NODE_COUNT; j++) {
+          const ratio = j / (NODE_COUNT - 1);
+          const y = ratio * strandLength;
+          nodes.push({
+            x: baseX,
+            y: y,
+            restX: baseX,
+            restY: y,
+            vx: 0,
+          });
+        }
+
+        // Sparkling fairy light beads spaced along each strand
+        const beads: FairyBead[] = [];
+        const beadCount = isMobile ? 6 : 9;
+        for (let b = 0; b < beadCount; b++) {
+          const nodeIdx = 1 + Math.floor((b / beadCount) * (NODE_COUNT - 2));
+          beads.push({
+            nodeIndex: nodeIdx,
+            offsetY: (b % 3) * 0.3,
+            twinkleOffset: Math.random() * Math.PI * 2,
+            twinkleSpeed: 2 + Math.random() * 2.5,
+            size: 1.8 + Math.random() * 1.6,
+            isDiamond: Math.random() > 0.65,
+          });
+        }
+
+        strands.push({
+          baseX,
+          length: strandLength,
+          nodes,
+          beads,
+        });
+      }
+    }
+
+    // Pointer event listeners
+    function updatePointerPos(clientX: number, clientY: number) {
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      mouseX = clientX - rect.left;
+      mouseY = clientY - rect.top;
+      isInteracting = true;
+
+      if (hint && !hint.classList.contains('opacity-0')) {
+        hint.classList.add('opacity-0');
+      }
+    }
+
+    canvas.addEventListener('pointermove', (e) => {
+      updatePointerPos(e.clientX, e.clientY);
+    });
+
+    canvas.addEventListener('pointerdown', (e) => {
+      updatePointerPos(e.clientX, e.clientY);
+    });
+
+    canvas.addEventListener('pointerleave', () => {
+      mouseX = -9999;
+      mouseY = -9999;
+      isInteracting = false;
+    });
+
+    // Touch support for smooth mobile interaction
+    canvas.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) {
+        updatePointerPos(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+
+    canvas.addEventListener('touchend', () => {
+      mouseX = -9999;
+      mouseY = -9999;
+      isInteracting = false;
+    });
+
+    // Draw diamond star sparkle glint
+    function drawStarGlint(x: number, y: number, radius: number, alpha: number) {
+      if (!ctx || alpha <= 0.05) return;
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.strokeStyle = `rgba(255, 250, 240, ${alpha})`;
+      ctx.lineWidth = 1;
+
+      ctx.beginPath();
+      ctx.moveTo(-radius, 0);
+      ctx.lineTo(radius, 0);
+      ctx.moveTo(0, -radius);
+      ctx.lineTo(0, radius);
+      ctx.stroke();
+
+      ctx.restore();
+    }
+
+    let lastTime = performance.now();
+
+    function render(currentTime: number) {
+      const dt = Math.min((currentTime - lastTime) / 1000, 0.05);
+      lastTime = currentTime;
+
+      if (!ctx) return;
+
+      ctx.clearRect(0, 0, canvas!.width, canvas!.height);
+      ctx.save();
+      ctx.scale(dpr, dpr);
+
+      const isMobile = width < 640;
+      const interactionRadius = isMobile ? 85 : 120;
+      const timeSec = currentTime * 0.001;
+
+      // Update and Draw Each Light Strand
+      for (let i = 0; i < strands.length; i++) {
+        const strand = strands[i];
+        const nodes = strand.nodes;
+
+        // Node 0 stays locked to top gold rod
+        nodes[0].x = strand.baseX;
+
+        // Physics update on each node
+        for (let j = 1; j < nodes.length; j++) {
+          const node = nodes[j];
+
+          // Cursor displacement: push strings horizontally away when cursor moves through them
+          const dx = node.x - mouseX;
+          const dy = node.y - mouseY;
+          const dist = Math.hypot(dx, dy);
+
+          if (dist < interactionRadius) {
+            const force = (1 - (dist / interactionRadius)) * 26;
+            const dir = dx >= 0 ? 1 : -1;
+            node.vx += dir * force * 0.35;
+          }
+
+          // Damped spring pulling back to resting position
+          const restoringForce = (node.restX - node.x) * 0.055;
+          // Very gentle ambient draft sway (gives organic life to strings even when untouched)
+          const ambient = Math.sin(timeSec * 1.5 + i * 0.35 + j * 0.2) * 0.2;
+
+          node.vx = (node.vx + restoringForce + ambient) * 0.88;
+          node.x += node.vx;
+
+          // Elastic smoothing with parent node
+          const parent = nodes[j - 1];
+          const diffParent = node.x - parent.x;
+          node.x -= diffParent * 0.08;
+        }
+
+        // Render Strand Curve
+        ctx.beginPath();
+        ctx.moveTo(nodes[0].x, nodes[0].y);
+        for (let j = 1; j < nodes.length - 1; j++) {
+          const xc = (nodes[j].x + nodes[j + 1].x) / 2;
+          const yc = (nodes[j].y + nodes[j + 1].y) / 2;
+          ctx.quadraticCurveTo(nodes[j].x, nodes[j].y, xc, yc);
+        }
+        ctx.lineTo(nodes[nodes.length - 1].x, nodes[nodes.length - 1].y);
+
+        // Shimmering golden thread line
+        ctx.strokeStyle = 'rgba(223, 183, 116, 0.65)';
+        ctx.lineWidth = 1.4;
+        ctx.stroke();
+
+        // Render Sparkling Fairy Lights along the Strand
+        for (let b = 0; b < strand.beads.length; b++) {
+          const bead = strand.beads[b];
+          const node = nodes[bead.nodeIndex];
+          if (!node) continue;
+
+          const bx = node.x;
+          const by = node.y;
+
+          // Twinkle factor
+          const baseTwinkle = 0.6 + 0.4 * Math.sin(timeSec * bead.twinkleSpeed + bead.twinkleOffset);
+          
+          // Extra brightness flare if cursor is nearby
+          const distToMouse = Math.hypot(bx - mouseX, by - mouseY);
+          const cursorFlare = distToMouse < 90 ? (1 - distToMouse / 90) * 0.8 : 0;
+          const totalTwinkle = Math.min(1.8, baseTwinkle + cursorFlare);
+
+          // Golden glowing halo
+          const haloRadius = bead.size * (2.4 + cursorFlare * 1.2);
+          const grad = ctx.createRadialGradient(bx, by, 0, bx, by, haloRadius);
+          grad.addColorStop(0, `rgba(255, 235, 175, ${0.85 * totalTwinkle})`);
+          grad.addColorStop(0.5, `rgba(223, 183, 116, ${0.4 * totalTwinkle})`);
+          grad.addColorStop(1, 'rgba(193, 138, 67, 0)');
+
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.arc(bx, by, haloRadius, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Bright ivory center core
+          ctx.fillStyle = `rgba(255, 255, 255, ${Math.min(1, 0.9 * totalTwinkle)})`;
+          ctx.beginPath();
+          ctx.arc(bx, by, bead.size * 0.75, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Diamond glint sparkle
+          if (bead.isDiamond && (totalTwinkle > 0.85 || cursorFlare > 0.2)) {
+            const sparkleLen = 4 + cursorFlare * 4;
+            drawStarGlint(bx, by, sparkleLen, (totalTwinkle - 0.7) * 1.2);
+          }
+        }
+      }
+
+      ctx.restore();
+      animId = requestAnimationFrame(render);
+    }
+
+    // Resize observer
+    const ro = new ResizeObserver(() => {
+      resize();
+    });
+    ro.observe(canvas);
+
+    // Initial setup
+    resize();
+    animId = requestAnimationFrame(render);
+
+    // Clean up
+    return () => {
+      cancelAnimationFrame(animId);
+      ro.disconnect();
+    };
+  }
+
+  initSparklingStrings();
+  document.addEventListener('astro:page-load', initSparklingStrings);
+</script>

@@ -1,0 +1,78 @@
+---
+import { galleryItems } from '../data/gallery';
+
+// Take the featured items or first 3
+const previewItems = galleryItems.filter(item => item.featured).slice(0, 3);
+---
+
+<section id="gallery-preview" class="py-16 sm:py-24 bg-ivory-light border-t border-beige/60">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header (Editorial Style matching reference) -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      <div>
+        <p class="font-sans text-xs sm:text-sm font-bold tracking-[0.22em] text-gold-amber uppercase mb-2">
+          OUR GALLERY
+        </p>
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-navy tracking-tight">
+          Moments We’ve Decorated
+        </h2>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:items-center gap-6 max-w-xl">
+        <p class="font-sans text-sm text-body leading-relaxed">
+          Take a look at some of our beautifully decorated events. Each setup is crafted with creativity, care and attention to detail.
+        </p>
+        <a
+          href="/gallery"
+          class="shrink-0 inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-gold/60 text-navy hover:text-white hover:bg-gold text-sm font-semibold transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+        >
+          <span>View Full Gallery</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Editorial 3-Column Preview Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+      {previewItems.map((item, index) => (
+        <a
+          href={`/gallery?category=${item.category}`}
+          class="group relative block rounded-2xl overflow-hidden shadow-sm hover:shadow-luxury-hover transition-all duration-500 bg-navy/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+        >
+          <!-- Image Aspect Container -->
+          <div class="relative aspect-[16/10] overflow-hidden">
+            <img
+              src={item.image}
+              alt={item.alt}
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+
+            <!-- Category Badge -->
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full bg-ivory/90 backdrop-blur-md text-navy text-xs font-semibold uppercase tracking-wider shadow-sm">
+                {item.categoryLabel}
+              </span>
+            </div>
+
+            <!-- Bottom Content Overlay -->
+            <div class="absolute bottom-0 inset-x-0 p-5 flex flex-col justify-end transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+              <h3 class="font-serif text-lg sm:text-xl font-bold text-white mb-1 drop-shadow-sm">
+                {item.title}
+              </h3>
+              <p class="font-sans text-xs text-ivory/80 line-clamp-1 group-hover:text-ivory transition-colors">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</section>

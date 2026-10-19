@@ -1,0 +1,90 @@
+---
+interface Props {
+  variant?: 'dark' | 'light';
+  size?: 'sm' | 'md' | 'lg';
+  showTagline?: boolean;
+}
+
+const { variant = 'dark', size = 'md', showTagline = true } = Astro.props;
+
+const isLight = variant === 'light';
+---
+
+<a href="/" class="group inline-flex items-center gap-3.5 select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg transition-transform hover:scale-[1.01]" aria-label="Ramesh Decorators - Home">
+  <!-- Crest Brand Mark -->
+  <div class="relative flex items-center justify-center shrink-0">
+    <svg 
+      class={`transition-transform duration-300 group-hover:rotate-6 ${size === 'lg' ? 'w-14 h-14' : size === 'sm' ? 'w-9 h-9' : 'w-11 h-11'}`} 
+      viewBox="0 0 100 100" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <!-- Outer decorative filigree ring -->
+      <circle cx="50" cy="50" r="44" stroke="#C18A43" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.65" />
+      <circle cx="50" cy="50" r="40" stroke="#C18A43" stroke-width="2" />
+      <circle cx="50" cy="50" r="36" stroke="#DFB774" stroke-width="1" opacity="0.8" />
+      
+      <!-- Ornate leaf / floral crest accents -->
+      <!-- Top crest crown -->
+      <path d="M50 8 C47 16, 40 18, 50 25 C60 18, 53 16, 50 8 Z" fill="#C18A43" />
+      <circle cx="50" cy="7" r="2.5" fill="#DFB774" />
+      <circle cx="43" cy="12" r="1.5" fill="#C18A43" />
+      <circle cx="57" cy="12" r="1.5" fill="#C18A43" />
+
+      <!-- Left garland laurel -->
+      <path d="M22 32 C17 38, 16 46, 18 54 C20 62, 26 70, 36 78 C31 71, 26 62, 27 52 C27 43, 30 36, 22 32 Z" fill="#C18A43" opacity="0.85" />
+      <circle cx="21" cy="42" r="2" fill="#DFB774" />
+      <circle cx="24" cy="56" r="2" fill="#DFB774" />
+      <circle cx="32" cy="70" r="2" fill="#DFB774" />
+
+      <!-- Right garland laurel -->
+      <path d="M78 32 C83 38, 84 46, 82 54 C80 62, 74 70, 64 78 C69 71, 74 62, 73 52 C73 43, 70 36, 78 32 Z" fill="#C18A43" opacity="0.85" />
+      <circle cx="79" cy="42" r="2" fill="#DFB774" />
+      <circle cx="76" cy="56" r="2" fill="#DFB774" />
+      <circle cx="68" cy="70" r="2" fill="#DFB774" />
+
+      <!-- Bottom crest ornament -->
+      <path d="M50 92 C45 85, 38 84, 50 78 C62 84, 55 85, 50 92 Z" fill="#C18A43" />
+      <circle cx="50" cy="93" r="2.5" fill="#DFB774" />
+
+      <!-- Central Royal 'R' Lettermark -->
+      <text 
+        x="50" 
+        y="60" 
+        text-anchor="middle" 
+        font-family="'Playfair Display', Georgia, serif" 
+        font-size="34" 
+        font-weight="700" 
+        font-style="normal" 
+        fill="url(#goldGradient)" 
+        letter-spacing="-1"
+      >R</text>
+
+      <!-- Gradient Definition -->
+      <defs>
+        <linearGradient id="goldGradient" x1="0" y1="20" x2="100" y2="80" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#DFB774" />
+          <stop offset="50%" stop-color="#C18A43" />
+          <stop offset="100%" stop-color="#9A6B2F" />
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- Wordmark & Tagline -->
+  <div class="flex flex-col">
+    <span class={`font-serif tracking-tight font-bold leading-tight ${
+      size === 'lg' ? 'text-2xl sm:text-3xl' : size === 'sm' ? 'text-lg' : 'text-xl sm:text-2xl'
+    } ${isLight ? 'text-white' : 'text-navy'}`}>
+      Ramesh Decorators
+    </span>
+    {showTagline && (
+      <span class={`font-sans uppercase tracking-[0.22em] font-medium leading-none mt-1 ${
+        size === 'lg' ? 'text-[11px]' : 'text-[9px] sm:text-[10px]'
+      } ${isLight ? 'text-gold-light' : 'text-gold-amber'}`}>
+        Event Decoration & Planning Services
+      </span>
+    )}
+  </div>
+</a>

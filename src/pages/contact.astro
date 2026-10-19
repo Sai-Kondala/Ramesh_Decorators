@@ -1,0 +1,328 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { businessConfig, getPhoneTelUrl, getWhatsAppUrl, getMailtoUrl } from '../data/business';
+---
+
+<Layout
+  title={`Contact & Enquiry — ${businessConfig.name}`}
+  description="Contact Ramesh Decorators for wedding stage setups, engagement decor, birthday celebrations, and corporate events. Call, WhatsApp, or send an enquiry."
+  currentPage="/contact"
+>
+  <!-- Page Header -->
+  <section class="relative py-16 sm:py-24 bg-navy text-white overflow-hidden">
+    <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#DFB774_1px,transparent_1px)] [background-size:20px_20px]"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/15 border border-gold/30 text-gold-light text-xs font-semibold uppercase tracking-[0.2em] mb-4">
+        <span>Get In Touch</span>
+      </div>
+      
+      <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-4">
+        Let’s Make Your Celebration Special
+      </h1>
+      
+      <p class="font-sans text-base sm:text-lg text-ivory/80 max-w-2xl mx-auto leading-relaxed">
+        Tell us about your event, and let’s bring your vision to life with thoughtful planning, quality materials, and refined decor styling.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content: Direct Actions + WhatsApp Enquiry Form -->
+  <section class="py-16 sm:py-24 bg-ivory">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- 4 Direct Contact Action Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 sm:mb-20">
+        
+        <!-- Action 1: Call Now -->
+        <a
+          href={getPhoneTelUrl()}
+          class="group p-6 bg-ivory-light rounded-2xl border border-beige/80 hover:border-gold/60 shadow-sm hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between"
+        >
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-gold/10 group-hover:bg-gold/20 text-gold-amber flex items-center justify-center mb-4 transition-colors">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <h3 class="font-serif text-lg font-bold text-navy mb-1 group-hover:text-gold-dark transition-colors">
+              Call Now
+            </h3>
+            <p class="font-sans text-xs text-body/70 mb-3">
+              Direct phone consultation
+            </p>
+            <p class="font-sans text-sm font-semibold text-navy">
+              {businessConfig.phone.display}
+            </p>
+          </div>
+          <span class="inline-flex items-center gap-1 text-xs font-semibold text-gold-dark mt-4 group-hover:translate-x-1 transition-transform">
+            <span>Dial number</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+
+        <!-- Action 2: WhatsApp Enquiry -->
+        <a
+          href={getWhatsAppUrl("Hello Ramesh Decorators, I would like to enquire about your event decoration services.")}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group p-6 bg-ivory-light rounded-2xl border border-beige/80 hover:border-gold/60 shadow-sm hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between"
+        >
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-green-500/10 group-hover:bg-green-500/20 text-green-600 flex items-center justify-center mb-4 transition-colors">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+            </div>
+            <h3 class="font-serif text-lg font-bold text-navy mb-1 group-hover:text-green-700 transition-colors">
+              WhatsApp Enquiry
+            </h3>
+            <p class="font-sans text-xs text-body/70 mb-3">
+              Instant message & photos
+            </p>
+            <p class="font-sans text-sm font-semibold text-navy">
+              {businessConfig.whatsapp.display}
+            </p>
+          </div>
+          <span class="inline-flex items-center gap-1 text-xs font-semibold text-green-600 mt-4 group-hover:translate-x-1 transition-transform">
+            <span>Open WhatsApp</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+
+        <!-- Action 3: Send an Email -->
+        <a
+          href={getMailtoUrl()}
+          class="group p-6 bg-ivory-light rounded-2xl border border-beige/80 hover:border-gold/60 shadow-sm hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between"
+        >
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-gold/10 group-hover:bg-gold/20 text-gold-amber flex items-center justify-center mb-4 transition-colors">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+            </div>
+            <h3 class="font-serif text-lg font-bold text-navy mb-1 group-hover:text-gold-dark transition-colors">
+              Send an Email
+            </h3>
+            <p class="font-sans text-xs text-body/70 mb-3">
+              Detailed requests & briefs
+            </p>
+            <p class="font-sans text-xs sm:text-sm font-semibold text-navy break-all">
+              {businessConfig.email.address}
+            </p>
+          </div>
+          <span class="inline-flex items-center gap-1 text-xs font-semibold text-gold-dark mt-4 group-hover:translate-x-1 transition-transform">
+            <span>Compose mail</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+
+        <!-- Action 4: Get Directions -->
+        <a
+          href={businessConfig.location.mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group p-6 bg-ivory-light rounded-2xl border border-beige/80 hover:border-gold/60 shadow-sm hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between"
+        >
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-gold/10 group-hover:bg-gold/20 text-gold-amber flex items-center justify-center mb-4 transition-colors">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <h3 class="font-serif text-lg font-bold text-navy mb-1 group-hover:text-gold-dark transition-colors">
+              Get Directions
+            </h3>
+            <p class="font-sans text-xs text-body/70 mb-3">
+              Office & warehouse location
+            </p>
+            <p class="font-sans text-sm font-semibold text-navy">
+              {businessConfig.location.display}
+            </p>
+          </div>
+          <span class="inline-flex items-center gap-1 text-xs font-semibold text-gold-dark mt-4 group-hover:translate-x-1 transition-transform">
+            <span>Open Google Maps</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+
+      </div>
+
+      <!-- Optional Smart WhatsApp Enquiry Form -->
+      <div class="max-w-3xl mx-auto bg-ivory-light rounded-3xl p-6 sm:p-10 border border-beige shadow-luxury">
+        <div class="text-center mb-8">
+          <p class="font-sans text-xs font-bold tracking-[0.2em] text-gold-amber uppercase mb-2">
+            ONLINE ENQUIRY
+          </p>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-navy">
+            Send an Event Enquiry
+          </h2>
+          <p class="font-sans text-xs sm:text-sm text-body/80 mt-2">
+            Fill out your celebration details below. We’ll generate a pre-formatted message ready to send directly to our team via WhatsApp.
+          </p>
+        </div>
+
+        <form id="enquiry-form" class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- Customer Name -->
+            <div>
+              <label for="client-name" class="block text-xs font-bold text-navy uppercase tracking-wider mb-2">
+                Your Full Name <span class="text-gold-amber">*</span>
+              </label>
+              <input
+                type="text"
+                id="client-name"
+                name="name"
+                required
+                placeholder="e.g. Ramesh Kumar"
+                class="w-full px-4 py-3 rounded-xl bg-white border border-beige focus:border-gold focus:ring-1 focus:ring-gold text-sm text-navy outline-none transition-all placeholder:text-body/40"
+              />
+            </div>
+
+            <!-- Phone Number -->
+            <div>
+              <label for="client-phone" class="block text-xs font-bold text-navy uppercase tracking-wider mb-2">
+                Contact Phone / WhatsApp <span class="text-gold-amber">*</span>
+              </label>
+              <input
+                type="tel"
+                id="client-phone"
+                name="phone"
+                required
+                placeholder="e.g. +91 98765 43210"
+                class="w-full px-4 py-3 rounded-xl bg-white border border-beige focus:border-gold focus:ring-1 focus:ring-gold text-sm text-navy outline-none transition-all placeholder:text-body/40"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- Event Type -->
+            <div>
+              <label for="event-type" class="block text-xs font-bold text-navy uppercase tracking-wider mb-2">
+                Event Type <span class="text-gold-amber">*</span>
+              </label>
+              <select
+                id="event-type"
+                name="eventType"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-white border border-beige focus:border-gold focus:ring-1 focus:ring-gold text-sm text-navy outline-none transition-all cursor-pointer"
+              >
+                <option value="Wedding Stage & Mandap">Wedding Stage & Mandap</option>
+                <option value="Reception Decor">Reception Stage & Lighting</option>
+                <option value="Engagement / Half-Saree Ceremony">Engagement / Half-Saree Ceremony</option>
+                <option value="Haldi & Mehendi Celebration">Haldi & Mehendi Celebration</option>
+                <option value="Birthday Event / Milestone Gala">Birthday Event / Milestone Gala</option>
+                <option value="Corporate Event / Banquet">Corporate Event / Banquet</option>
+                <option value="Other Celebration">Other Celebration</option>
+              </select>
+            </div>
+
+            <!-- Approximate Date -->
+            <div>
+              <label for="event-date" class="block text-xs font-bold text-navy uppercase tracking-wider mb-2">
+                Approximate Event Date
+              </label>
+              <input
+                type="date"
+                id="event-date"
+                name="date"
+                class="w-full px-4 py-3 rounded-xl bg-white border border-beige focus:border-gold focus:ring-1 focus:ring-gold text-sm text-navy outline-none transition-all cursor-pointer"
+              />
+            </div>
+          </div>
+
+          <!-- Message / Special Requests -->
+          <div>
+            <label for="client-msg" class="block text-xs font-bold text-navy uppercase tracking-wider mb-2">
+              Tell Us About Your Vision & Venue Location
+            </label>
+            <textarea
+              id="client-msg"
+              name="message"
+              rows="3"
+              placeholder="e.g. Looking for outdoor floral mandap styling for an evening wedding ceremony with ~300 guests in Hyderabad."
+              class="w-full px-4 py-3 rounded-xl bg-white border border-beige focus:border-gold focus:ring-1 focus:ring-gold text-sm text-navy outline-none transition-all placeholder:text-body/40"
+            ></textarea>
+          </div>
+
+          <!-- Notice & Validation Feedback -->
+          <div class="p-4 rounded-xl bg-gold/10 border border-gold/30 text-xs text-body leading-relaxed flex items-start gap-3">
+            <svg class="w-5 h-5 text-gold-dark shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <p>
+              <strong>Static Website Transparency:</strong> When you click the button below, WhatsApp will automatically open with your message prepared. You can review the text before pressing send. No account registration or server database required.
+            </p>
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            id="form-submit-btn"
+            class="w-full py-4 px-6 rounded-full bg-gradient-to-r from-green-600 via-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold text-base shadow-md hover:shadow-luxury-hover hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
+          >
+            <!-- WhatsApp Logo -->
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+            <span>Send Enquiry via WhatsApp</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<script define:vars={{ whatsappNumber: businessConfig.whatsapp.number }}>
+  function initContactForm() {
+    const form = document.getElementById('enquiry-form');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const nameInput = document.getElementById('client-name');
+      const phoneInput = document.getElementById('client-phone');
+      const eventTypeInput = document.getElementById('event-type');
+      const dateInput = document.getElementById('event-date');
+      const msgInput = document.getElementById('client-msg');
+
+      const name = nameInput?.value.trim();
+      const phone = phoneInput?.value.trim();
+      const eventType = eventTypeInput?.value || 'Event Decoration';
+      const date = dateInput?.value || 'Date to be decided';
+      const notes = msgInput?.value.trim() || 'Please share your catalog and package details.';
+
+      if (!name || !phone) {
+        alert('Please provide your name and phone number so we can reach back to you.');
+        return;
+      }
+
+      // Format WhatsApp Message
+      const formattedMessage = 
+        `✨ *Event Decoration Enquiry — Ramesh Decorators* ✨\n\n` +
+        `👤 *Name:* ${name}\n` +
+        `📞 *Phone:* ${phone}\n` +
+        `🎉 *Event Type:* ${eventType}\n` +
+        `📅 *Estimated Date:* ${date}\n` +
+        `📝 *Vision / Venue Notes:* ${notes}\n\n` +
+        `Looking forward to hearing from your team!`;
+
+      const encoded = encodeURIComponent(formattedMessage);
+      const waUrl = `https://wa.me/${whatsappNumber}?text=${encoded}`;
+
+      // Open WhatsApp in a new tab
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+    });
+  }
+
+  initContactForm();
+  document.addEventListener('astro:page-load', initContactForm);
+</script>

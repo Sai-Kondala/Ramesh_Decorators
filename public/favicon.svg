@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <circle cx="50" cy="50" r="48" fill="#08243D"/>
+  <circle cx="50" cy="50" r="42" stroke="#C18A43" stroke-width="2"/>
+  <circle cx="50" cy="50" r="38" stroke="#DFB774" stroke-width="1" stroke-dasharray="2 2"/>
+  <text x="50" y="64" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="42" font-weight="700" fill="#DFB774">R</text>
+</svg>
